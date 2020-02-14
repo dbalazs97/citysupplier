@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"alwaysStrict": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"incremental": true,
+		"module": "CommonJS",
+		"newLine": "lf",
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitAny": true,
+		"noEmitOnError": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"outDir": "dist",
+		"pretty": true,
+		"removeComments": true,
+		"strict": true,
+		"strictNullChecks": true,
+		"target": "ESNext"
+	}
+}

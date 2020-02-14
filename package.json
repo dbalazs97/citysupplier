@@ -1,0 +1,14 @@
+{
+	"name": "citysupplier-backend",
+	"version": "0.0.1",
+	"description": "A web-based city supplying mmo game",
+	"main": "index.ts",
+	"author": "Balázs Dóka",
+	"license": "MIT",
+	"private": true,
+	"devDependencies": {
+		"@types/node": "^13.7.1",
+		"tslint": "^6.0.0",
+		"typescript": "^3.7.5"
+	}
+}

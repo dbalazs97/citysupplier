@@ -1,0 +1,74 @@
+{
+	"defaultSeverity": "error",
+	"rules": {
+		"adjacent-overload-signatures": true,
+		"array-type": true,
+		"arrow-parens": [
+			true,
+			"ban-single-arg-parens"
+		],
+		"arrow-return-shorthand": true,
+		"await-promise": true,
+		"class-name": true,
+		"curly": [
+			true,
+			"ignore-same-line"
+		],
+		"encoding": true,
+		"eofline": true,
+		"forin": true,
+		"indent": [
+			true,
+			"tabs"
+		],
+		"linebreak-style": [
+			true,
+			"LF"
+		],
+		"member-access": true,
+		"member-ordering": true,
+		"no-angle-bracket-type-assertion": true,
+		"no-duplicate-imports": true,
+		"no-duplicate-super": true,
+		"no-empty": true,
+		"no-empty-interface": true,
+		"no-floating-promises": true,
+		"no-invalid-this": true,
+		"no-var-keyword": true,
+		"number-literal-format": true,
+		"object-literal-key-quotes": [
+			true,
+			"always"
+		],
+		"object-literal-shorthand": true,
+		"prefer-const": true,
+		"prefer-for-of": true,
+		"prefer-function-over-method": true,
+		"prefer-method-signature": true,
+		"prefer-object-spread": true,
+		"prefer-template": true,
+		"prefer-while": true,
+		"quotemark": [
+			true,
+			"single"
+		],
+		"radix": true,
+		"restrict-plus-operands": true,
+		"semicolon": true,
+		"trailing-comma": [
+			true,
+			{
+				"multiline": "always",
+				"singleline": "never"
+			}
+		],
+		"typeof-compare": true,
+		"use-isnan": true,
+		"variable-name": [
+			true,
+			"allow-leading-underscore",
+			"ban-keywords"
+		],
+		"whitespace": true
+	}
+}
