@@ -2,7 +2,10 @@
 	"defaultSeverity": "error",
 	"rules": {
 		"adjacent-overload-signatures": true,
-		"array-type": true,
+		"array-type": [
+			true,
+			"generic"
+		],
 		"arrow-parens": [
 			true,
 			"ban-single-arg-parens"
@@ -36,10 +39,7 @@
 		"no-invalid-this": true,
 		"no-var-keyword": true,
 		"number-literal-format": true,
-		"object-literal-key-quotes": [
-			true,
-			"always"
-		],
+		"object-literal-key-quotes": false,
 		"object-literal-shorthand": true,
 		"prefer-const": true,
 		"prefer-for-of": true,

@@ -3,6 +3,7 @@ import { WebSocketReceive, WebSocketSend } from './src/websocket/WebSocketMessag
 
 const bootstrap = async () => {
 	const socket = new WebSocket();
+
 	socket.onMessage(WebSocketReceive.TIME_REQUEST).subscribe(payload => {
 		console.log(`TIME_REQUEST message sent with payload:`, payload.second.time);
 		const now: number = new Date().getTime();
@@ -10,7 +11,7 @@ const bootstrap = async () => {
 			type: WebSocketSend.TIME_RESPONSE, data: {
 				time: now,
 				delta: now - payload.second.time,
-			}
+			},
 		});
 	});
 	socket.listen(8001);
