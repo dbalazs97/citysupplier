@@ -4,7 +4,9 @@ import { Observable, Subject } from 'rxjs';
 import { Pair } from '../utils/Pair';
 import { filter, map } from 'rxjs/operators';
 import * as http from 'http';
+import { Singleton } from '../utils/SingletonDecorator';
 
+@Singleton
 export class WebSocket {
 	private server: Server;
 	private connections: Array<Connection> = [];
@@ -32,11 +34,11 @@ export class WebSocket {
 
 	public get onConnect(): Observable<Connection> {
 		return this.onConnectSubject.asObservable();
-	};
+	}
 
 	public get onDisconnect(): Observable<Connection> {
 		return this.onDisconnectSubject.asObservable();
-	};
+	}
 
 	public listen(port: number) {
 		const httpServer = http.createServer();
@@ -51,9 +53,9 @@ export class WebSocket {
 			filter(msg => msg.second!.type === type),
 			map(msg => ({ first: msg.first, second: msg.second!.data as WebSocketReceiveData[T] })),
 		);
-	};
+	}
 
-	sendMessage<T extends WebSocketSend>(client: Connection, message: WebSocketMessage<T>) {
+	public sendMessage<T extends WebSocketSend>(client: Connection, message: WebSocketMessage<T>) {
 		const connection: Connection | undefined = this.connections.find(c => c.id === client.id);
 		if (connection !== undefined) {
 			connection.write(JSON.stringify(validateMessageBody<WebSocketSend>(message)), err => {
