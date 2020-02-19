@@ -8,7 +8,16 @@
 	"private": true,
 	"devDependencies": {
 		"@types/node": "^13.7.1",
+		"@types/sockjs": "^0.3.31",
+		"ts-node-dev": "^1.0.0-pre.44",
 		"tslint": "^6.0.0",
 		"typescript": "^3.7.5"
+	},
+	"dependencies": {
+		"rxjs": "^6.5.4",
+		"sockjs": "^0.3.19"
+	},
+	"scripts": {
+		"start": "tsnd --respawn --transpileOnly index.ts"
 	}
 }
