@@ -1,5 +1,7 @@
 import { WebSocket } from './src/websocket/WebSocket';
 import { WebSocketReceive, WebSocketSend } from './src/websocket/WebSocketMessage';
+import { Chunk } from './src/model/map/Chunk';
+import { SawMill } from './src/model/entity/buildings/SawMill';
 
 const bootstrap = async () => {
 	const socket = new WebSocket();
@@ -15,6 +17,12 @@ const bootstrap = async () => {
 		});
 	});
 	socket.listen(8001);
+
+	const chunk = new Chunk();
+	chunk.placeBuilding(0, 0, new SawMill({ x: 0, y: 0 }));
+	chunk.placeBuilding(0, 1, new SawMill({ x: 0, y: 1 }));
+	chunk.placeBuilding(1, 0, new SawMill({ x: 1, y: 0 }));
+	chunk.placeBuilding(1, 1, new SawMill({ x: 1, y: 1 }));
 };
 
 (async () => await bootstrap())();
