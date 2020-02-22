@@ -1,7 +1,6 @@
 import { Entity } from './Entity';
-import { Resource } from '../resource/Resource';
+import { Recipe } from '../resource/Recipe';
 
-export interface Building extends Entity {
-	input: Map<Resource, number>;
-	output: Map<Resource, number>;
+export abstract class Building extends Entity {
+	public abstract recipe: Recipe;
 }

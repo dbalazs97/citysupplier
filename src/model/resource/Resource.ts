@@ -1,4 +1,17 @@
-export enum Resource {
+export enum ResourceType {
+	Fish,
+	Wheat,
+	Flour,
+	Bread,
 	Wood,
-	Plank
+	Planks,
+	Furniture,
+	IronOre,
+	Coal,
+	Steel,
+}
+
+export interface Resource {
+	type: ResourceType;
+	amount: number;
 }
