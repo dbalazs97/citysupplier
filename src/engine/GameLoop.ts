@@ -12,7 +12,7 @@ export class GameLoop {
 	constructor() {
 		this.timer = Loop.setGameLoop(() => {
 			this.tasks.forEach(task => task());
-		}, 1000 / 60);
+		}, 1000);
 	}
 
 	public registerTask(task: VoidFunction): number {
