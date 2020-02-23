@@ -3,7 +3,7 @@ import { Direction } from '../general/Direction';
 import { Coordinate } from '../general/Coordinate';
 
 export class Entity implements Placeable {
-	public neighbours: Map<Direction, Entity> = new Map<Direction, Entity>();
+	public neighbours: Map<Direction, Entity | null> = new Map();
 
 	constructor(public position: Coordinate) {
 	}
