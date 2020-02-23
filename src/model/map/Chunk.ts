@@ -12,8 +12,7 @@ export class Chunk implements Updateable {
 	private balance: Map<ResourceType, number> = new Map();
 
 	constructor() {
-		this.entities = new Array(CHUNK_SIZE).fill([]);
-		this.entities.map(() => new Array(CHUNK_SIZE).fill(null));
+		this.entities = new Array(CHUNK_SIZE).fill(new Array(CHUNK_SIZE).fill(null));
 	}
 
 	public update(_time: number): void {
