@@ -36,6 +36,10 @@ export class Chunk implements Updateable {
 
 	public setAtPosition(x: number, y: number, entity: Entity): void {
 		if (x >= 0 && y >= 0 && x < CHUNK_SIZE && y < CHUNK_SIZE) {
+			if (this.entities[x][y] !== null) {
+				throw new ReferenceError(`Can not set entity at (${ x }, ${ y }): there is already an entity there`);
+			}
+
 			entity.position = { x, y };
 			entity.neighbours.set(Direction.UP, this.entities?.[x]?.[y - 1] ?? null);
 			entity.neighbours.set(Direction.DOWN, this.entities?.[x]?.[y + 1] ?? null);
