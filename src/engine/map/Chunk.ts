@@ -56,7 +56,19 @@ export class Chunk implements Updateable {
 	public placeBuilding(x: number, y: number, building: Building): void {
 		this.setAtPosition(x, y, building);
 
-		building.recipe.input?.forEach(input => this.balance.set(input.type, (this.balance.get(input.type) ?? 0) - input.amount));
-		building.recipe.output?.forEach(output => this.balance.set(output.type, (this.balance.get(output.type) ?? 0) + output.amount));
+		building.recipe.input?.forEach(input => this.growBalance(input.type, -1 * input.amount));
+		building.recipe.output?.forEach(output => this.growBalance(output.type, output.amount));
+	}
+
+	public removeBuilding(building: Building) {
+		if (this.entities[building.position.x][building.position.y] === building) {
+			building.recipe.input?.forEach(input => this.growBalance(input.type, input.amount));
+			building.recipe.output?.forEach(output => this.growBalance(output.type, -1 * output.amount));
+			this.entities[building.position.x][building.position.y] = null;
+		}
+	}
+
+	private growBalance(type: ResourceType, by: number): void {
+		this.balance.set(type, this.getBalance(type) + by);
 	}
 }
