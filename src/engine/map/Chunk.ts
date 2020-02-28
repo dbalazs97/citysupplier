@@ -1,8 +1,8 @@
-import { Entity } from '../entity/Entity';
-import { Direction } from '../general/Direction';
-import { Building } from '../entity/Building';
-import { ResourceType } from '../resource/Resource';
-import { Updateable } from '../../engine/Updateable';
+import { Entity } from '../../model/entity/Entity';
+import { Direction } from '../../model/general/Direction';
+import { Building } from '../../model/entity/Building';
+import { ResourceType } from '../../model/resource/Resource';
+import { Updateable } from '../Updateable';
 
 export const CHUNK_SIZE = 16;
 

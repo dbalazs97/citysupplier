@@ -1,6 +1,6 @@
 import { WebSocket } from './src/websocket/WebSocket';
 import { WebSocketReceive, WebSocketSend } from './src/websocket/WebSocketMessage';
-import { Chunk } from './src/model/map/Chunk';
+import { Chunk } from './src/engine/map/Chunk';
 import { SawMill } from './src/model/entity/buildings/SawMill';
 
 const bootstrap = async () => {
