@@ -53,6 +53,14 @@ export class Chunk implements Updateable {
 		}
 	}
 
+	public getStock(type: ResourceType): number {
+		return this.stock.get(type) ?? 0;
+	}
+
+	public getBalance(type: ResourceType): number {
+		return this.balance.get(type) ?? 0;
+	}
+
 	public placeBuilding(x: number, y: number, building: Building): void {
 		this.setAtPosition(x, y, building);
 
