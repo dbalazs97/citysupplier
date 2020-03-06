@@ -12,7 +12,9 @@ export class GameLoop {
 
 	constructor() {
 		this.timer = Loop.setGameLoop(() => {
-			allSettled(this.tasks).catch(e => console.error('Game loop task error', e?.message));
+			allSettled([...this.tasks.values()])
+				.then(() => this.tasks.clear())
+				.catch(e => console.error('Game loop task error', e?.message));
 		}, 1000);
 	}
 
