@@ -1,21 +1,22 @@
 // @ts-ignore
 import * as Loop from 'gameloop-compatible';
 import { Singleton } from '../utils/SingletonDecorator';
+import * as allSettled from 'promise.allsettled';
 
 @Singleton
 export class GameLoop {
 	private readonly timer: number;
-	private tasks: Map<number, VoidFunction> = new Map();
+	private tasks: Map<number, Promise<void>> = new Map();
 
 	private counter: number = 0;
 
 	constructor() {
 		this.timer = Loop.setGameLoop(() => {
-			this.tasks.forEach(task => task());
+			allSettled(this.tasks).catch(e => console.error('Game loop task error', e?.message));
 		}, 1000);
 	}
 
-	public registerTask(task: VoidFunction): number {
+	public registerTask(task: Promise<void>): number {
 		this.tasks.set(++this.counter, task);
 		return this.counter - 1;
 	}
