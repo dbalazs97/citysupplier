@@ -1,0 +1,22 @@
+export enum ResourceType {
+	MONEY = 'MONEY',
+	WORKFORCE = 'WORKFORCE',
+
+	IRON = 'IRON',
+	COAL = 'COAL',
+	GOLD = 'GOLD',
+	OIL = 'OIL',
+	WOOD = 'WOOD',
+	WHEAT = 'WHEAT',
+	RUBBER = 'RUBBER',
+
+	PLANKS = 'PLANKS',
+	FURNITURE = 'FURNITURE',
+	FLOuR = 'FLOUR',
+	FOOD = 'FOOD',
+	STEEL = 'STEEL',
+	TOOLS = 'TOOLS',
+	PLASTICS = 'PLASTICS',
+	ELECTRONICS = 'ELECTRONICS',
+	CAR = 'CAR',
+}
