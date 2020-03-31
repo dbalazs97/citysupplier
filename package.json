@@ -1,0 +1,10 @@
+{
+	"private": true,
+	"name": "citysupplier",
+	"workspaces": [
+		"backend",
+		"frontend",
+		"common"
+	],
+	"scripts": {}
+}
