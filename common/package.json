@@ -1,6 +1,8 @@
 {
 	"name": "citysupplier-common",
 	"version": "0.0.1",
-	"dependencies": {
+	"dependencies": {},
+	"devDependencies": {
+		"typescript": "^3.8.3"
 	}
 }
