@@ -4,7 +4,9 @@
 	"scripts": {
 		"start": "nest start --watch",
 		"build": "nest build",
-		"run": "node dist/main"
+		"run": "node dist/main",
+		"lint": "eslint . --ext .ts",
+		"lint-fix": "eslint . --ext .ts --fix"
 	},
 	"dependencies": {
 		"@nestjs/common": "^7.0.7",
