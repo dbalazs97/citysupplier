@@ -1,6 +1,6 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { World } from 'citysupplier-common/model/world';
-import { configuration } from '../../config';
+import { configuration } from '../../config/config';
 import { IslandGenerationService } from '../island-generation/island-generation.service';
 import { Water } from '../../model/world/Water';
 import { Land } from '../../model/world/Land';

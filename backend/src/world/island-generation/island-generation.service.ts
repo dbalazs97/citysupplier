@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Island } from 'citysupplier-common/model/world';
 import { NoiseService } from '../noise/noise.service';
-import { configuration } from '../../config';
+import { configuration } from '../../config/config';
 import { Land } from '../../model/world/Land';
 import { Water } from '../../model/world/Water';
 import { range2D } from '../../utils/range2D';
