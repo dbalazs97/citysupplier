@@ -1,11 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { Island } from 'citysupplier-common/model/world';
+import { Coordinate } from 'citysupplier-common';
 import { NoiseService } from '../noise/noise.service';
 import { configuration } from '../../config/config';
-import { Land } from '../../model/world/Land';
-import { Water } from '../../model/world/Water';
-import { range2D } from '../../utils/range2D';
-import { Coordinate } from 'citysupplier-common/model/global';
+import { Land } from '../../model/domain/world/Land';
+import { Water } from '../../model/domain/world/Water';
+import { Island } from '../../model/domain/world/Island';
 
 @Injectable()
 export class IslandGenerationService {
@@ -19,15 +18,13 @@ export class IslandGenerationService {
 		const size = configuration.ISLAND_SIZE;
 		const middle = size / 2;
 		const radius = floor(middle * configuration.ISLAND_FILL_RATIO);
-		const island: Island = { entities: [] };
+		const island: Island = new Island();
 
 		this.worldPosition = { x: worldX, y: worldY };
 
-		range2D(
-			0, size,
-			(x, y) => island.entities[x].push(new Water({ x, y })),
-			() => island.entities.push([]),
-		);
+		for (let i = 0; i < configuration.ISLAND_SIZE ** 2; i++) {
+			island.entities.push(new Water({ x: i % configuration.ISLAND_SIZE, y: Math.floor(i / configuration.ISLAND_SIZE) }));
+		}
 
 
 		for (let angle = 0; angle < 2 * Math.PI * radius; angle += 0.01) {

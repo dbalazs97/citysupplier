@@ -1,38 +1,43 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import { World } from 'citysupplier-common/model/world';
 import { configuration } from '../../config/config';
 import { IslandGenerationService } from '../island-generation/island-generation.service';
-import { Water } from '../../model/world/Water';
-import { Land } from '../../model/world/Land';
-import * as chalk from 'chalk';
-import { range2D } from '../../utils/range2D';
+import { InjectModel } from 'nestjs-typegoose';
+import { ReturnModelType } from '@typegoose/typegoose';
+import { WorldEntity } from '../../model/entity/world/WorldEntity';
+import { Island } from '../../model/domain/world/Island';
+import { BuildingEntity } from '../../model/entity/world/BuildingEntity';
+import { TileEntity } from '../../model/entity/world/TileEntity';
 
 @Injectable()
 export class WorldGenerationService implements OnModuleInit {
-	private world: World;
 
 	constructor(
-		private islandGenerationService: IslandGenerationService
+		private islandGenerationService: IslandGenerationService,
+		@InjectModel(WorldEntity) private readonly worldModel: ReturnModelType<typeof WorldEntity>,
+		@InjectModel(BuildingEntity) private readonly buildingModel: ReturnModelType<typeof BuildingEntity>,
+		@InjectModel(TileEntity) private readonly tileModel: ReturnModelType<typeof TileEntity>,
 	) {
 	}
 
 	public onModuleInit(): void {
-		this.generateNewWorld();
+		this.generateNewWorld().then(() => console.log('World generated'));
 	}
 
-	public generateNewWorld(): void {
-		this.world = { islands: [] };
+	public async generateNewWorld(): Promise<void> {
+		const islands: Array<Island> = [];
 
-		range2D(0, configuration.WORLD_SIZE,
-			(x, y) => this.world.islands[x].push(this.islandGenerationService.generateIsland(x, y)),
-			() => this.world.islands.push([]),
-		);
+		for (let i = 0; i < configuration.WORLD_SIZE ** 2; i++) {
+			islands.push(this.islandGenerationService.generateIsland(i % configuration.WORLD_SIZE, Math.floor(i / configuration.WORLD_SIZE)));
+		}
 
-		this.drawToConsole();
+		const world = new this.worldModel();
+		world.islands = islands.map(island => island.toEntity(this.buildingModel, this.tileModel));
+		world._id = null;
+		await world.save().then(r => console.log('World saved', r)).catch(e => console.log(e));
 	}
 
 	public drawToConsole() {
-		this.world.islands.forEach(islands => {
+		/*this.world.item.islands.forEach(islands => {
 			islands.forEach(island => {
 				island.entities.forEach(entities => {
 					entities.forEach(entity => {
@@ -43,6 +48,6 @@ export class WorldGenerationService implements OnModuleInit {
 				});
 				process.stdout.write('\n');
 			});
-		});
+		});*/
 	}
 }
