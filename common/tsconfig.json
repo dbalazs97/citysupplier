@@ -1,11 +1,20 @@
 {
 	"compilerOptions": {
+		"composite": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
 		"module": "commonjs",
 		"target": "es5",
 		"declaration": true,
-		"outDir": "./lib"
+		"declarationMap": true,
+		"outDir": "./dist",
+		"rootDir": "."
 	},
 	"exclude": [
 		"node_modules"
+	],
+	"include": [
+		"index.ts",
+		"model"
 	]
 }

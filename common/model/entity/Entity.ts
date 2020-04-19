@@ -1,5 +1,7 @@
-import { Coordinate } from "../global";
+import { Coordinate } from '../global';
+import { prop } from '@typegoose/typegoose';
 
-export interface Entity {
+export class Entity {
+	@prop()
 	position: Coordinate;
 }
